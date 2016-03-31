@@ -1,3 +1,6 @@
-<p>Welcome to home baby!</p><br>
+<p>Welcome back <%= current_user.email %></p><br>
+
+You have <%= current_user.posts.count %> messages <br>
+
 
 Что-бы вылогиниться нажмите <%= link_to 'вылогиниться', destroy_user_session_path %>
