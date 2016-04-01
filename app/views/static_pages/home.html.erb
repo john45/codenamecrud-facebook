@@ -1,6 +1,24 @@
+Что-бы вылогиниться нажмите <%= link_to 'вылогиниться', destroy_user_session_path, method: :delete %><br>
+<img src="http://www.gravatar.com/avatar/00000000000000000000000000000000" />
 <p>Welcome back <%= current_user.email %></p><br>
 
-You have <%= current_user.posts.count %> messages <br>
 
+<%= form_for @post do |f| %>
+  <%= f.text_area :message, placeholder: "write a text..." %>
+  <%= f.submit 'создать сообщение' %>
+<% end %>
 
-Что-бы вылогиниться нажмите <%= link_to 'вылогиниться', destroy_user_session_path %>
+<% @posts.each do |post| %>
+<table style="border: 1px solid blue; color: green">
+  <tr >
+    <td>
+      <%= post.created_at %>  <%= post.user.email %>:
+    </td>
+    <td>
+      <%= post.message %>
+    </td>
+  </tr>
+</table>
+
+  <br>
+<% end %>
