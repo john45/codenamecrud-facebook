@@ -1,0 +1,19 @@
+<p>На главную</p> <%= link_to 'HOME', root_path %>
+
+<p>Список всех пользователей в системе</p>
+
+<% @users.each do |user| %>
+
+  <ul>
+    <li>
+      <img src="http://www.gravatar.com/avatar/00000000000000000000000000000000" />
+      <%= link_to 'Профиль пользователя', user_path%><br>
+      <%= user.email %>
+    </li>
+    <li>
+      <%= link_to 'подписаться в друзья' %>
+      <%= link_to 'Удалить пользователя' %>
+    </li>
+  </ul>
+
+<% end %>

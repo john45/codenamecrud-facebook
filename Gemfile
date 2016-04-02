@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem 'devise'
 gem "twitter-bootstrap-rails"
+gem 'faker'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
