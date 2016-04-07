@@ -7,11 +7,12 @@ class UsersController < ApplicationController
   end
 
   def show
-
+    @user = User.find_by(id: params[:id])
+    @posts = @user.posts.order('created_at DESC')
   end
 
-  def all_users
-    @users = User.all
+  def index
+    @users = User.all.order('created_at ASC')
   end
 
 end

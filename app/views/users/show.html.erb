@@ -1,0 +1,19 @@
+<%= link_to 'Все пользователи', users_path %><br>
+<%= link_to 'На главную', root_path %>
+<img src="http://www.gravatar.com/avatar/00000000000000000000000000000000" />
+<p>Welcome <%= @user.email %></p><br>
+
+  <% if @posts %>
+    <% @posts.each do |post| %>
+    <table style="width: 500px;">
+      <tr >
+        <td style="text-align: left;">
+          <%= post.created_at %>  <%= post.user.email %>:
+        </td>
+        <td style="text-align: left;">
+          <%= post.message %>
+        </td>
+      </tr>
+    </table>
+    <% end %>
+  <% end %>

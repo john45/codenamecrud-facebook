@@ -11,10 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160403112050) do
+ActiveRecord::Schema.define(version: 20160406042516) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "confirm_friendships", force: :cascade do |t|
+    t.integer  "friendship_id"
+    t.boolean  "confirm",       default: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+  end
+
+  add_index "confirm_friendships", ["friendship_id"], name: "index_confirm_friendships_on_friendship_id", using: :btree
 
   create_table "friendships", force: :cascade do |t|
     t.integer  "requester_id"
