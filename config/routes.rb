@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   devise_for :users
   resources  :users
   resources :posts
+  resources :friendships
   # match '/allusers', to: 'users#all_users', via: 'get'
   # match '/user:id', to: 'users#show', via: 'get'
 

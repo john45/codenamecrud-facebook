@@ -9,9 +9,11 @@
       <img src="http://www.gravatar.com/avatar/00000000000000000000000000000000" />
       <%= link_to 'Профиль пользователя', user %><br>
       <%= user.email %>
+
     </li>
     <li>
-      <%= link_to 'подписаться в друзья' %>
+        <%= link_to 'подписаться в друзья', {controller: 'friendships', action: 'create'}, method: :post %>
+
       <%= link_to 'Удалить пользователя' %>
     </li>
   </ul>

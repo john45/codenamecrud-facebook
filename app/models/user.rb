@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
   has_many :responders, through: :friendships, source: :responder
 
 
-  def follow!(other_user)
+  def add_to_friends!(other_user)
     friendships.create!(responder_id: other_user.id)
   end
 
