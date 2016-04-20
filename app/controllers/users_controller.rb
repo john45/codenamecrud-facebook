@@ -13,7 +13,28 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all.order('created_at ASC')
-
+    @responders = responders_for_current_user(current_user)
   end
 
+  def request_to_friend
+    @friendship = Friendship.new(incoming_params)
+    if @friendship.save
+      flash[:notice] = 'Запрос в друзья успешно отправлен'
+      redirect_to users_path
+    else
+      flash[:alert] = 'Запрос в друзья не отправлен'
+      redirect_to users_path
+    end
+  end
+
+  private
+
+    def incoming_params
+      params.permit(:requester_id, :responder_id)
+    end
+
+    def responders_for_current_user(current_user)
+      list_of_friendships = current_user.friendships.where(confirmation: nil).to_a
+
+    end
 end

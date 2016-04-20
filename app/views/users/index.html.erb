@@ -6,16 +6,17 @@
 
   <ul>
     <li>
-      <img src="http://www.gravatar.com/avatar/00000000000000000000000000000000" />
-      <%= link_to 'Профиль пользователя', user %><br>
-      <%= user.email %>
-
-    </li>
+        <img src="http://www.gravatar.com/avatar/00000000000000000000000000000000" />
+        <%= link_to 'Профиль пользователя', user %><br><%= user.email %></li>
     <li>
-        <%= link_to 'подписаться в друзья', {controller: 'friendships', action: 'create'}, method: :post %>
-
-      <%= link_to 'Удалить пользователя' %>
-    </li>
+      <% unless (user.id == current_user.id) %>
+        <%= form_tag("/request_to_friend", method: 'get') do %>
+          <%= hidden_field_tag(:requester_id, current_user.id) %>
+          <%= hidden_field_tag(:responder_id, user.id) %>
+          <%= submit_tag('Подписаться в друзья') %>
+        <% end %>
+      <% end %>
+      <%= link_to 'Удалить пользователя' %></li>
   </ul>
 
 <% end %>
