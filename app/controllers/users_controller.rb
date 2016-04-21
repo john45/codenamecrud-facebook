@@ -34,7 +34,11 @@ class UsersController < ApplicationController
     end
 
     def responders_for_current_user(current_user)
-      list_of_friendships = current_user.friendships.where(confirmation: nil).to_a
-
+      list_id = []
+      list_of_friendships_without_conf = current_user.friendships.where(confirmation: nil).to_a
+      list_of_friendships_without_conf.each do |fr|
+        list_id << fr[:responder_id]
+      end
+      list_id
     end
 end

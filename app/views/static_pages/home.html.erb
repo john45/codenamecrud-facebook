@@ -1,9 +1,10 @@
 <div class="container">
   <div class="col-md-2">
-    Что-бы вылогиниться нажмите <%= link_to 'вылогиниться', destroy_user_session_path, method: :delete %><br>
+    <%= link_to 'вылогиниться', destroy_user_session_path, method: :delete %><br>
      <%= link_to 'Список всех пользователей', users_path %>
     <img src="http://www.gravatar.com/avatar/00000000000000000000000000000000" />
     <p>Welcome back <%= current_user.email %></p><br>
+    <p> <%= link_to 'Список друзей и приглащений' %></p><br>
   </div>
   <div class="col-md-10">
     <%= form_for @post do |f| %>
