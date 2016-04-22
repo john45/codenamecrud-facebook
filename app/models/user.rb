@@ -7,9 +7,12 @@ class User < ActiveRecord::Base
 
 
   has_many :friendships, foreign_key: 'requester_id', dependent: :destroy
+  has_many :reverse_friendships, foreign_key: "responder_id",
+                             class_name: "Friendship"
+
 
   has_many :requesters, through: :friendships, source: :requester
-  has_many :responders, through: :friendships, source: :responder
+  has_many :responders, through: :reverse_friendships, source: :responder
 
 
   def add_to_friends!(other_user)

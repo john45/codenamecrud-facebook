@@ -1,22 +1,28 @@
 <p>На главную</p> <%= link_to 'HOME', root_path %>
+<div class="col-md-6">
+  <p>Список всех друзей</p>
 
-<p>Список всех друзей и приглашений</p>
+  <% @users.each do |user| %>
 
-<% @users.each do |user| %>
-
-  <ul>
-    <li>
-        <img src="http://www.gravatar.com/avatar/00000000000000000000000000000000" />
-        <%= link_to 'Профиль пользователя', user %><br><%= user.email %></li>
-    <li>
-      <% unless (user.id == current_user.id) or @responders.rindex(user.id) %>
-        <%= form_tag("/request_to_friend", method: 'get') do %>
-          <%= hidden_field_tag(:requester_id, current_user.id) %>
-          <%= hidden_field_tag(:responder_id, user.id) %>
-          <%= submit_tag('Подписаться в друзья') %>
+    <ul>
+      <li>
+          <img src="http://www.gravatar.com/avatar/00000000000000000000000000000000" />
+          <%= link_to 'Профиль пользователя', user %><br><%= user.email %></li>
+      <li>
+        <% unless (user.id == current_user.id) or @responders.rindex(user.id) %>
+          <%= form_tag("/request_to_friend", method: 'get') do %>
+            <%= hidden_field_tag(:requester_id, current_user.id) %>
+            <%= hidden_field_tag(:responder_id, user.id) %>
+            <%= submit_tag('Подтвердить дружбу') %>
+          <% end %>
         <% end %>
-      <% end %>
-      <%= link_to 'Удалить пользователя' %></li>
-  </ul>
+        <%= link_to 'Удалить из друзей' %></li>
+    </ul>
 
-<% end %>
+  <% end %>
+</div>
+
+<div class="col-md-6">
+  <p>Список всех друзей</p>
+
+</div>

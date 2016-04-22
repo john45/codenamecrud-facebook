@@ -1,5 +1,7 @@
 class FriendshipsController < ApplicationController
   def index
-    @user_without_conf = current_user.friendships.where(confirmation: nil)
+
+    @friends = User.friendships.where.not(confirmation: nil)
+    @user = current_user.friendships.where(confirmation: nil)
   end
 end
