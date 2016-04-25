@@ -12,8 +12,12 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.all.order('created_at ASC')
+    @users = User.paginate(page: params[:page]).order('created_at ASC')
     @responders = responders_for_current_user(current_user)
+  end
+
+  def friends_and_confirm
+
   end
 
   def request_to_friend

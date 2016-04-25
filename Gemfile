@@ -3,6 +3,8 @@ source 'https://rubygems.org'
 gem 'devise'
 gem "twitter-bootstrap-rails"
 gem 'faker'
+gem 'will_paginate', '3.0.7'
+gem 'bootstrap-will_paginate', '0.0.10'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
